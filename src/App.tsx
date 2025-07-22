@@ -48,28 +48,28 @@ import { cn } from './lib/utils';
 // }
 
 function App() {
+  // 1. Panggil SEMUA hooks di bagian atas, tanpa syarat.
   const isMobile = useIsMobile();
-  if (isMobile) {
-    return (
-      <div className="justify-center items-center p-5 flex h-screen">
-        <p className='text-[25px]'>Maaf, web ini tidak dapat diakses melalui perangkat mobile.</p>
-      </div>
-    );
-  }
-
   const [showBook, setShowBook] = useState(false);
+
   const handleIntroComplete = () => {
     setShowBook(true);
   };
+
+  // 2. Hanya ada SATU return statement utama.
   return (
     <div className={cn(
-        "App",
-        "h-screen flex justify-center items-center",
-        "bg-neutral-700"
-      )}>
-      {/* Cukup render <Intro /> di dalam <main> */}
+      "App",
+      "h-screen flex justify-center items-center",
+      "bg-neutral-700"
+    )}>
       <main className='w-full h-full flex justify-center items-center'>
-       {showBook ? (
+        {/* 3. Gunakan kondisi di dalam JSX untuk menentukan apa yang akan dirender. */}
+        {isMobile ? (
+          <div className="justify-center items-center p-5 flex">
+            <p className='text-white text-center text-[25px]'>Maaf, web ini tidak dapat diakses melalui perangkat mobile.</p>
+          </div>
+        ) : showBook ? (
           <TheBook />
         ) : (
           <Intro onComplete={handleIntroComplete} />
