@@ -33,6 +33,7 @@ function Intro({ onComplete }: { onComplete: () => void }) {
       await new Promise(resolve => setTimeout(resolve, 2000));
       onComplete();
     } catch (err: any) {
+      await new Promise(resolve => setTimeout(resolve, 2000));
       setError(err.message || "An unexpected error occurred.");
     } finally {
       
