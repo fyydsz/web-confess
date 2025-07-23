@@ -28,10 +28,14 @@ function Intro({ onComplete }: { onComplete: () => void }) {
       if (response.status !== 200) {
         throw new Error("Secret code is incorrect or not found.");
       }
+
+      // Buat delay untuk mensimulasikan proses pengecekan
+      await new Promise(resolve => setTimeout(resolve, 2000));
       onComplete();
     } catch (err: any) {
       setError(err.message || "An unexpected error occurred.");
     } finally {
+      
       setIsLoading(false);
     }
   };
@@ -53,11 +57,12 @@ function Intro({ onComplete }: { onComplete: () => void }) {
               <Label htmlFor="secret-code">Secret Code</Label>
               <Input
                 id="secret-code"
-                type="password" // Sebaiknya gunakan type="password" untuk kode rahasia
+                type="text"
                 placeholder="Enter your secret code here"
                 required
+                maxLength={8}
                 value={secretCode}
-                onChange={(e) => setSecretCode(e.target.value.toUpperCase())} // Opsional: Ubah ke huruf besar
+                onChange={(e) => setSecretCode(e.target.value)}
                 disabled={isLoading}
               />
             </div>
@@ -68,7 +73,7 @@ function Intro({ onComplete }: { onComplete: () => void }) {
         </CardContent>
 
         {/* PINDAHKAN CardFooter KE DALAM SINI */}
-        <CardFooter>
+        <CardFooter className="pt-4">
           <Button type="submit" disabled={isLoading}>
             {isLoading ? 'Checking...' : 'Enter'}
           </Button>
