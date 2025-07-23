@@ -85,10 +85,9 @@ function App() {
           <Intro onComplete={handleIntroComplete} />
         )}
       </main>
-      <audio ref={audioRef} src="/music/firebird.mp3" loop />
-      <MusicNotifier isPlaying={showBook} trackName="Galantis - Firebird" />
+      <audio ref={audioRef} src="/music/undertale.mp3" loop />
+      <MusicNotifier isPlaying={showBook} trackName="Toby Fox - Undertale" />
     </div>
-
   );
 }
 
