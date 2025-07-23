@@ -53,6 +53,7 @@ function TheBook() {
   const [totalPages, setTotalPages] = useState(0);
   const [isPage1TypingDone, setIsPage1TypingDone] = useState(false);
   const [isPage3TypingDone, setIsPage3TypingDone] = useState(false);
+  const [isPage5TypingDone, setIsPage5TypingDone] = useState(false);
 
   const handleFlip = (e: { data: number }) => {
     setCurrentPage(e.data);
@@ -131,14 +132,17 @@ function TheBook() {
           onInit={(e: any) => handleInit(e.object)}
         >
           <div className={`${[coverClasses, rightPageAttributes].join(" ")} bg-zinc-900 `} >
-            <h1 className="text-4xl font-bold text-white">Test Book</h1>
+            <h1 className="text-4xl font-bold text-white">The Book of Feelings</h1>
+            <p className="text-lg text-white mt-2">~A confession project</p>
+            {/* Footer below*/}
+            <p className="text-xs text-gray-500 mt-76">Created with ❤️ by Fyy</p>
           </div>
 
           {/* Halaman Isi 1*/}
-          <div className={[pageClasses, leftPageAttributes].join(" ")}>
+          <div className={[pageClasses, leftPageAttributes,].join(" ")}>
             <TypingEffect
-              className="text-base leading-relaxed text-justify"
-              text={`Hello there ^.^ Semoga kamu membaca buku singkat ini sampai selesai ya.\nAku ingin confess perasaanku ke kamu, sedikit flashback. \n\n Aku ingat waktu kita ngobrol, dari obrolan, cerita yang kita bagi, main bareng, dan banyak sekali "kebetulan" yang enggak ku sangka, dari sana aku ngerasa nyaman, sampai aku nunjukin hal yang gak ku tunjukin tentang diriku ke orang-orang seperti karyaku, keahlianku dengan harapan kamu bisa melihatku lebih dalam.`}
+              className="text-base leading-relaxed text-justify "
+              text={`Hello there ^.^ Semoga kamu membaca buku singkat ini sampai selesai ya.\nAku ingin confess perasaanku ke kamu, dengan sedikit flashback. \n\n Aku ingat waktu kita ngobrol, dari obrolan, cerita yang kita bagi, main bareng, dan banyak sekali "kebetulan" yang enggak ku sangka, dari sana aku ngerasa nyaman, sampai aku nunjukin hal yang gak ku tunjukin tentang diriku ke orang-orang seperti karyaku, keahlianku dengan harapan kamu bisa melihatku lebih dalam.`}
               speed={50}
               startTyping={currentPage >= 1}
               onTypingComplete={() => setIsPage1TypingDone(true)}
@@ -159,8 +163,8 @@ function TheBook() {
           <div className={[pageClasses, leftPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Alasan aku membuat project website ini, jawabannya sederhana:\n**i have feelings for you**.\n\nSemua usahaku untuk mendekatimu, semua hal yang aku tunjukin ke kamu, itu semua karena aku tulus menyukaimu...\nNamun, sikapmu saat itu membuatku berpikir kalau perasaan ini cuma satu arah. Aku mundur karena kupikir aku bukan orang yang tepat, apalagi setelah aku mendengar ada orang lain yang mendekatimu.`}
-              speed={25}
+              text={`Alasan aku membuat project website ini, jawabannya sederhana:\n**i have feelings for you**.\n\nSemua usahaku untuk mendekatimu, semua hal yang aku tunjukin ke kamu, itu semua karena **aku tulus menyukaimu...**\nNamun, sikapmu saat itu membuatku berpikir kalau perasaan ini cuma satu arah. Aku mundur karena kupikir aku bukan orang yang tepat, apalagi setelah aku mendengar *ada orang lain yang mendekatimu*.`}
+              speed={50}
               startTyping={currentPage >= 3}
               onTypingComplete={() => setIsPage3TypingDone(true)}
             />
@@ -170,8 +174,8 @@ function TheBook() {
           <div className={[pageClasses, rightPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Aku ga masalah kalau kamu dekat dengan orang lain, tetapi waktu selama kita komunikasi, aku berharap kamu bisa jujur dan tidak ditutup-tutupi, seandainya saat itu kamu memberiku peringatan bahwa kamu risih dan ga nyaman, aku bakal ngerti dan pasti akan mundur. Rasa sakitnya pasti ada tetapi hanya sesaat lebih baik daripada sakit yang berkepanjangan. `}
-              speed={25}
+              text={`Aku ga masalah kalau kamu dekat dengan orang lain, tetapi waktu selama kita komunikasi, aku berharap kamu bisa jujur dan tidak ditutup-tutupi, seandainya saat itu kamu memberiku peringatan bahwa kamu risih dan ga nyaman, aku bakal ngerti dan pasti akan mundur. \n\nRasa sakit itu pasti ada tetapi hanya sesaat saja, lebih baik daripada sakit yang berkepanjangan setelah mengetahui kebenarannya. `}
+              speed={50}
               startTyping={isPage3TypingDone}
             />
           </div>
@@ -180,9 +184,10 @@ function TheBook() {
           <div className={[pageClasses, leftPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Meskipun tidak berakhir seperti yang diharapkan, aku berterima kasih untuk waktu dan percakapannya. Dari pengalaman ini, aku belajar banyak tentang diriku sendiri, tentang harapan, dan tentang pentingnya melepaskan. Terima kasih untuk pelajarannya.\n\n Aku berharap kamu bahagia dengan pilihanmu, dan semoga suatu hari nanti kita bisa bertemu kembali lagi sebagai teman.`}
-              speed={25}
-              startTyping={currentPage >= 4}
+              text={`Meskipun tidak berakhir seperti yang diharapkan, aku berterima kasih untuk waktu dan percakapannya. Dari pengalaman ini, aku belajar banyak tentang diriku sendiri, tentang harapan, dan tentang pentingnya melepaskan.\nTerima kasih untuk pelajarannya.\n\n Aku berharap kamu bahagia dengan pilihanmu, dan semoga suatu hari nanti kita bisa bertemu kembali lagi sebagai teman.`}
+              speed={50}
+              startTyping={currentPage >= 5}
+              onTypingComplete={() => setIsPage5TypingDone(true)}
             />
           </div>
 
@@ -191,13 +196,27 @@ function TheBook() {
             <TypingEffect
               className="text-base leading-relaxed text-justify"
               text={`\n\n\nTerima kasih telah membaca buku ini. Aku harap kamu mengerti perasaanku yang kualami selama ini. Jika kamu ingin membalas, aku akan sangat menghargainya. Jika tidak, aku akan tetap menghargai keputusan itu.\n\n~Fyy`}
-              speed={25}
-              startTyping={currentPage >= 5}
+              speed={50}
+              startTyping={isPage5TypingDone}
             />
           </div>
 
           {/* Sampul Belakang */}
           <div className={`${[coverClasses, leftPageAttributes].join(" ")} bg-zinc-800 text-white`}>
+            <h1 className="text-4xl font-bold text-white">Thank You ❤️</h1>
+            <p className="text-lg text-white mt-2">As your information:</p>
+            <p className="text-sm text-gray-400 mt-6">- Project ini membutuhkan waktu 1 minggu untuk membuatnya.</p>
+            <p className="text-sm text-gray-400 mt-2">- Kamu bisa lihat sumber kode yang ku buat di <a
+              className="text-sm text-blue-500 mt-2"
+              href="https://github.com/fyydsz/web-confess/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://github.com/fyydsz/web-confess/
+            </a></p>
+
+            {/* Footer below*/}
+            <p className="text-xs text-gray-500 mt-60">Created with ❤️ by Fyy</p>
           </div>
         </HTMLFlipBook>
       </div>
@@ -219,7 +238,7 @@ function TheBook() {
           Next Page
         </Button>
       </div>
-      
+
     </div>
   );
 }

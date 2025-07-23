@@ -77,7 +77,7 @@ function App() {
         {/* 3. Gunakan kondisi di dalam JSX untuk menentukan apa yang akan dirender. */}
         {isMobile ? (
           <div className="justify-center items-center p-5 flex">
-            <p className='text-white text-center text-[25px]'>Maaf, web ini tidak support untuk perangkat mobile.</p>
+            <p className='text-white text-center text-[25px]'>Hai, aku cuma mau nyaranin, buka websitenya lewat laptop yaa, biar pengalaman membacanya lebih nyaman.</p>
           </div>
         ) : showBook ? (
           <TheBook />
