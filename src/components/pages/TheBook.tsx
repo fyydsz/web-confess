@@ -170,7 +170,7 @@ function TheBook() {
           <div className={[pageClasses, rightPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Sejujurnya, aku ingin kita bisa berkomunikasi lagi seperti dulu. Tapi jika menurutmu itu ga mungkin, aku hargai keputusanmu. Tapi yang penting, sekarang kamu tau perasaanku.\n\nAku hanya ingin kamu tau yang sebenarnya, karena memendamnya membuat dadaku terasa sesak.\n\n Dan juga aku minta maaf jika aku kesannya membuatmu risih atau mengganggumu.`}
+              text={`Sejujurnya, aku ingin kita bisa berkomunikasi seperti dulu dan mengenalmu lebih dalam. Tapi jika menurutmu itu ga mungkin, aku hargai keputusanmu. Tapi yang penting, sekarang kamu tau perasaanku.\n\nAku hanya ingin kamu tau yang sebenarnya, karena memendamnya membuat dadaku terasa sesak.\n\n Dan juga aku minta maaf jika aku kesannya membuatmu risih atau mengganggumu.`}
               speed={25}
               startTyping={isPage3TypingDone}
             />
