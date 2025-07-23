@@ -138,7 +138,7 @@ function TheBook() {
           <div className={[pageClasses, leftPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`}
+              text={`Hello there ^.^ Semoga kamu membaca buku singkat ini sampai selesai ya.\nAku ingin confess perasaanku ke kamu, sedikit flashback. \n\n Aku ingat waktu kita ngobrol, dari obrolan, cerita yang kita bagi, main bareng, dan banyak sekali "kebetulan" yang enggak ku sangka, dari sana aku ngerasa nyaman, sampai aku nunjukin hal yang gak ku tunjukin tentang diriku ke orang-orang seperti karyaku, keahlianku dengan harapan kamu bisa melihatku lebih dalam.`}
               speed={50}
               startTyping={currentPage >= 1}
               onTypingComplete={() => setIsPage1TypingDone(true)}
@@ -149,7 +149,7 @@ function TheBook() {
           <div className={[pageClasses, rightPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Following the previous page, we continue with more text to fill the book. This is just a placeholder text to demonstrate the flipping effect and the typing animation. The goal is to create an engaging reading experience, while also showcasing the capabilities of the HTMLFlipBook component.`}
+              text={`Aku juga ingat waktu pertama kali kita main Roblox. Kamu bahkan sampai top up. Aku senang, dan berharap kita bisa main lagi. Tapi setelahnya, setiap ajakanku kaya membentur ke dinding, kamu kesannya udah sulit buat diajak main. Perlahan, aku mulai berpikir mungkin kamu menghindar dan risih. \n\nPernah saat itu berencana mengajakmu nonton bareng secara online, tapi itu ga pernah terwujud, padahal aku benar-benar ingin spend time menonton series kesukaanmu "Harry Potter."`}
               speed={50}
               startTyping={isPage1TypingDone}
             />
@@ -159,7 +159,7 @@ function TheBook() {
           <div className={[pageClasses, leftPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Welcome to the third page of our book. Here, we will discuss the importance of user experience in web design. A well-designed interface not only enhances usability but also creates a lasting impression on users. It's crucial to consider accessibility and responsiveness in modern web applications. Responsive design ensures that your content is accessible across various devices, providing a seamless experience for all users.`}
+              text={`Alasan aku membuat project website ini, jawabannya sederhana:\n**i have feelings for you**.\n\nSemua usahaku untuk mendekatimu, semua hal yang aku tunjukin ke kamu, itu semua karena aku tulus menyukaimu...\nNamun, sikapmu saat itu membuatku berpikir kalau perasaan ini cuma satu arah. Aku mundur karena kupikir aku bukan orang yang tepat, apalagi setelah aku mendengar ada orang lain yang mendekatimu.`}
               speed={25}
               startTyping={currentPage >= 3}
               onTypingComplete={() => setIsPage3TypingDone(true)}
@@ -170,7 +170,7 @@ function TheBook() {
           <div className={[pageClasses, rightPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Dolor sit amet, consectetur adipiscing elit. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur. Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.`}
+              text={`Sejujurnya, aku ingin kita bisa berkomunikasi lagi seperti dulu. Tapi jika menurutmu itu ga mungkin, aku hargai keputusanmu. Tapi yang penting, sekarang kamu tau perasaanku.\n\nAku hanya ingin kamu tau yang sebenarnya, karena memendamnya membuat dadaku terasa sesak.\n\n Dan juga aku minta maaf jika aku kesannya membuatmu risih atau mengganggumu.`}
               speed={25}
               startTyping={isPage3TypingDone}
             />
