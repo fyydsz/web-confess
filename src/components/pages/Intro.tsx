@@ -24,22 +24,24 @@ function Intro({ onComplete }: { onComplete: () => void }) {
     setError(null);
 
     try {
-      const response = await axios.get(`https://api.spacewalk.my.id/confess/data?confessId=${secretCode}`);
-      if (response.status !== 200) {
-        throw new Error("Secret code is incorrect or not found.");
-      }
-
-      // Buat delay untuk mensimulasikan proses pengecekan
+      await axios.get(`https://api.spacewalk.my.id/confess/data?confessId=${secretCode}`);
+      // Delay simulasi
       await new Promise(resolve => setTimeout(resolve, 2000));
       onComplete();
     } catch (err: any) {
       console.error("Error fetching data:", err);
+
       await new Promise(resolve => setTimeout(resolve, 2000));
-      setError(err.message || "An unexpected error occurred.");
+
+      if (err.response?.status === 404) {
+        setError("Oops, incorrect code.");
+      } else {
+        setError(err.message || "An unexpected error occurred.");
+      }
     } finally {
-      
       setIsLoading(false);
     }
+
   };
 
   return (
