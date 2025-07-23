@@ -34,19 +34,31 @@ function TypingEffect({ text, speed, startTyping = false, onTypingComplete }: Ty
     }
   }, [index, text, speed, startTyping, onTypingComplete]); // Tambahkan onTypingComplete ke dependencies
 
-  const renderText = () => {
-    // Pecah string berdasarkan "**"
-    // Contoh: "Teks **tebal** biasa" -> ["Teks ", "tebal", " biasa"]
-    const parts = displayedText.split('**');
+  // di dalam komponen TypingEffect.tsx
 
-    return parts.map((part, i) => {
-      // Jika indeks bagian adalah ganjil, maka itu adalah teks tebal
+  const renderText = () => {
+    // 1. Pecah string berdasarkan format bold ("**") terlebih dahulu
+    const boldParts = displayedText.split('**');
+
+    return boldParts.map((boldPart, i) => {
+      // Jika indeks ganjil, ini adalah teks bold
       if (i % 2 === 1) {
-        return <strong key={i}>{part}</strong>;
+        return <strong key={`bold-${i}`}>{boldPart}</strong>;
       }
-      
-      // Jika indeks genap, itu teks biasa
-      return <Fragment key={i}>{part}</Fragment>;
+
+      // 2. Jika indeks genap, ini adalah teks biasa.
+      //    Sekarang kita pecah lagi berdasarkan format italic ("*")
+      const italicParts = boldPart.split('*');
+
+      return italicParts.map((italicPart, j) => {
+        // Jika indeks ganjil (di dalam sub-bagian), ini adalah teks italic
+        if (j % 2 === 1) {
+          return <em key={`italic-${i}-${j}`}>{italicPart}</em>;
+        }
+
+        // Jika tidak, ini adalah teks biasa
+        return <Fragment key={`normal-${i}-${j}`}>{italicPart}</Fragment>;
+      });
     });
   };
 
