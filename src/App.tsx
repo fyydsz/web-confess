@@ -61,13 +61,13 @@ function App() {
     <div className={cn(
       "App",
       "h-screen flex justify-center items-center",
-      "bg-neutral-700"
+      "bg-neutral-700",
     )}>
-      <main className='w-full h-full flex justify-center items-center'>
+      <main className='w-full h-full flex justify-center items-center overflow-hidden'>
         {/* 3. Gunakan kondisi di dalam JSX untuk menentukan apa yang akan dirender. */}
         {isMobile ? (
           <div className="justify-center items-center p-5 flex">
-            <p className='text-white text-center text-[25px]'>Maaf, web ini tidak dapat diakses melalui perangkat mobile.</p>
+            <p className='text-white text-center text-[25px]'>Maaf, web ini tidak support untuk perangkat mobile.</p>
           </div>
         ) : showBook ? (
           <TheBook />
