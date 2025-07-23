@@ -35,7 +35,9 @@ function Intro({ onComplete }: { onComplete: () => void }) {
 
       if (err.response?.status === 404) {
         setError("Oops, incorrect code.");
-      } else {
+      } else if (err.response?.status === 403) {
+        setError("Sorry, this code has been used, thank you for reading my confession.");
+      }else {
         setError(err.message || "An unexpected error occurred.");
       }
     } finally {
