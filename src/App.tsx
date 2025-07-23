@@ -1,11 +1,12 @@
 // import TypingEffect from './components/animation/typing-effect';
 // import SequentialTypingEffect from './components/hooks/sequential-typing-effect';
 // import { useIsMobile } from './components/hooks/no-mobile';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './App.css'
 import { useIsMobile } from './components/hooks/no-mobile';
-import Intro  from './components/pages/Intro';
+import Intro from './components/pages/Intro';
 import TheBook from './components/pages/TheBook';
+import MusicNotifier from './components/hooks/music-notifier';
 import { cn } from './lib/utils';
 
 // function App() {
@@ -48,7 +49,6 @@ import { cn } from './lib/utils';
 // }
 
 function App() {
-  // 1. Panggil SEMUA hooks di bagian atas, tanpa syarat.
   const isMobile = useIsMobile();
   const [showBook, setShowBook] = useState(false);
 
@@ -56,12 +56,50 @@ function App() {
     setShowBook(true);
   };
 
-  // 2. Hanya ada SATU return statement utama.
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [audioSrc, setAudioSrc] = useState<string>('');
+
+  useEffect(() => {
+    const fetchAudio = async () => {
+      try {
+        const response = await fetch('/music.mp3');
+        if (!response.ok) {
+          throw new Error('Gagal memuat file musik');
+        }
+        const blob = await response.blob();
+        const url = URL.createObjectURL(blob);
+        setAudioSrc(url);
+      } catch (error) {
+        console.error("Error fetching audio:", error);
+      }
+    };
+
+    fetchAudio();
+
+    // Cleanup: hapus object URL saat komponen di-unmount untuk mencegah memory leak
+    return () => {
+      if (audioSrc) {
+        URL.revokeObjectURL(audioSrc);
+      }
+    };
+  }, []); // Dependensi kosong agar hanya berjalan sekali
+
+  // useEffect untuk memutar musik
+  useEffect(() => {
+    // Pastikan audioSrc sudah ada dan buku sudah terbuka
+    if (showBook && audioSrc) {
+      audioRef.current?.play().catch(error => {
+        console.error("Audio play was prevented:", error);
+      });
+    }
+  }, [showBook, audioSrc]); // Tambahkan audioSrc sebagai dependensi
+
+
   return (
     <div className={cn(
       "App",
       "h-screen flex justify-center items-center",
-      "bg-neutral-700",
+      "bg-[#262626]",
     )}>
       <main className='w-full h-full flex justify-center items-center overflow-hidden'>
         {/* 3. Gunakan kondisi di dalam JSX untuk menentukan apa yang akan dirender. */}
@@ -75,7 +113,10 @@ function App() {
           <Intro onComplete={handleIntroComplete} />
         )}
       </main>
+      <audio ref={audioRef} src="/music/firebird.mp3" loop />
+      <MusicNotifier isPlaying={showBook} trackName="Galantis - Firebird" />
     </div>
+
   );
 }
 
