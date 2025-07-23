@@ -25,15 +25,8 @@ function Intro({ onComplete }: { onComplete: () => void }) {
 
     try {
       const response = await axios.get(`https://api.spacewalk.my.id/confess/data?confessId=${secretCode}`);
-
-
-      // Ambil data JSON dari respons
-      const data = response.data;
-
-      // Cek jika status HTTP tidak ok (misalnya 404, 500, dll)
-      if (response.status < 200 || response.status >= 300) {
-        // Gunakan pesan error dari API jika ada, atau pesan default
-        throw new Error(data.error?.message || "Secret code is incorrect or not found.");
+      if (response.status === 404) {
+        throw new Error("Secret code is incorrect or not found.");
       }
 
       // Buat delay untuk mensimulasikan proses pengecekan
@@ -43,7 +36,7 @@ function Intro({ onComplete }: { onComplete: () => void }) {
       await new Promise(resolve => setTimeout(resolve, 2000));
       setError(err.message || "An unexpected error occurred.");
     } finally {
-
+      
       setIsLoading(false);
     }
   };
