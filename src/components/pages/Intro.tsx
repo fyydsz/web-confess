@@ -25,6 +25,7 @@ function Intro({ onComplete }: { onComplete: () => void }) {
 
     try {
       const response = await axios.get(`https://api.spacewalk.my.id/confess/data?confessId=${secretCode}`);
+      console.log(response.data);
       if (response.status === 404) {
         throw new Error("Secret code is incorrect or not found.");
       }
