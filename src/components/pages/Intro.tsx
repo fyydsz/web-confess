@@ -25,8 +25,7 @@ function Intro({ onComplete }: { onComplete: () => void }) {
 
     try {
       const response = await axios.get(`https://api.spacewalk.my.id/confess/data?confessId=${secretCode}`);
-      console.log(response.data);
-      if (response.status === 404) {
+      if (response.status !== 200) {
         throw new Error("Secret code is incorrect or not found.");
       }
 
@@ -34,6 +33,7 @@ function Intro({ onComplete }: { onComplete: () => void }) {
       await new Promise(resolve => setTimeout(resolve, 2000));
       onComplete();
     } catch (err: any) {
+      console.error("Error fetching data:", err);
       await new Promise(resolve => setTimeout(resolve, 2000));
       setError(err.message || "An unexpected error occurred.");
     } finally {
