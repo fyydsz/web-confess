@@ -51,48 +51,20 @@ import { cn } from './lib/utils';
 function App() {
   const isMobile = useIsMobile();
   const [showBook, setShowBook] = useState(false);
-
-  const handleIntroComplete = () => {
-    setShowBook(true);
-  };
-
+ 
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [audioSrc, setAudioSrc] = useState<string>('');
-
+  
   useEffect(() => {
-    const fetchAudio = async () => {
-      try {
-        const response = await fetch('/music.mp3');
-        if (!response.ok) {
-          throw new Error('Gagal memuat file musik');
-        }
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        setAudioSrc(url);
-      } catch (error) {
-        console.error("Error fetching audio:", error);
-      }
-    };
-
-    fetchAudio();
-
-    // Cleanup: hapus object URL saat komponen di-unmount untuk mencegah memory leak
-    return () => {
-      if (audioSrc) {
-        URL.revokeObjectURL(audioSrc);
-      }
-    };
-  }, []); // Dependensi kosong agar hanya berjalan sekali
-
-  // useEffect untuk memutar musik
-  useEffect(() => {
-    // Pastikan audioSrc sudah ada dan buku sudah terbuka
-    if (showBook && audioSrc) {
+    if (showBook) {
       audioRef.current?.play().catch(error => {
         console.error("Audio play was prevented:", error);
       });
     }
-  }, [showBook, audioSrc]); // Tambahkan audioSrc sebagai dependensi
+  }, [showBook]);
+
+  const handleIntroComplete = () => {
+    setShowBook(true);
+  };
 
 
   return (
