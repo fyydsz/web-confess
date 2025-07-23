@@ -170,9 +170,29 @@ function TheBook() {
           <div className={[pageClasses, rightPageAttributes].join(" ")}>
             <TypingEffect
               className="text-base leading-relaxed text-justify"
-              text={`Sejujurnya, aku ingin kita bisa berkomunikasi seperti dulu dan mengenalmu lebih dalam. Tapi jika menurutmu itu ga mungkin, aku hargai keputusanmu. Tapi yang penting, sekarang kamu tau perasaanku.\n\nAku hanya ingin kamu tau yang sebenarnya, karena memendamnya membuat dadaku terasa sesak.\n\n Dan juga aku minta maaf jika aku kesannya membuatmu risih atau mengganggumu.`}
+              text={`Aku ga masalah kalau kamu dekat dengan orang lain, tetapi waktu selama kita komunikasi, aku berharap kamu bisa jujur dan tidak ditutup-tutupi, seandainya saat itu kamu memberiku peringatan bahwa kamu risih dan ga nyaman, aku bakal ngerti dan pasti akan mundur. Rasa sakitnya pasti ada tetapi hanya sesaat lebih baik daripada sakit yang berkepanjangan. `}
               speed={25}
               startTyping={isPage3TypingDone}
+            />
+          </div>
+
+          {/* Halaman Isi 5 */}
+          <div className={[pageClasses, leftPageAttributes].join(" ")}>
+            <TypingEffect
+              className="text-base leading-relaxed text-justify"
+              text={`Meskipun tidak berakhir seperti yang diharapkan, aku berterima kasih untuk waktu dan percakapannya. Dari pengalaman ini, aku belajar banyak tentang diriku sendiri, tentang harapan, dan tentang pentingnya melepaskan. Terima kasih untuk pelajarannya.\n\n Aku berharap kamu bahagia dengan pilihanmu, dan semoga suatu hari nanti kita bisa bertemu kembali lagi sebagai teman.`}
+              speed={25}
+              startTyping={currentPage >= 4}
+            />
+          </div>
+
+          {/* Halaman Isi 6 */}
+          <div className={[pageClasses, rightPageAttributes].join(" ")}>
+            <TypingEffect
+              className="text-base leading-relaxed text-justify"
+              text={`\n\n\nTerima kasih telah membaca buku ini. Aku harap kamu mengerti perasaanku yang kualami selama ini. Jika kamu ingin membalas, aku akan sangat menghargainya. Jika tidak, aku akan tetap menghargai keputusan itu.\n\n~Fyy`}
+              speed={25}
+              startTyping={currentPage >= 5}
             />
           </div>
 
