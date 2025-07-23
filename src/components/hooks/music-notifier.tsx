@@ -29,12 +29,12 @@ function MusicNotifier({ isPlaying, trackName }: MusicNotifierProps) {
       // 3. Atur timer untuk memulai animasi keluar setelah 4 detik
       const exitTimer = setTimeout(() => {
         setIsVisible(false);
-      }, 7050); // 7550ms (tampil) + 50ms (jeda masuk)
+      }, 6050); // 7550ms (tampil) + 50ms (jeda masuk)
 
       // 4. Hapus komponen dari DOM setelah animasi keluar selesai
       const unmountTimer = setTimeout(() => {
         setIsMounted(false);
-      }, 7550); // 7050ms + 500ms (durasi transisi keluar)
+      }, 6550); // 7050ms + 500ms (durasi transisi keluar)
 
       // Cleanup untuk membersihkan semua timer jika komponen unmount tiba-tiba
       return () => {
